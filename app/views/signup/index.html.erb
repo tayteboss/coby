@@ -5,50 +5,86 @@
         </div>
         <div class="signup__form__fields">
             <form action="">
-                <div class="form-fields-wrapper">
-                    <div class="form-field-wrapper">
-                        <label for="firstname">first name</label>
-                        <input type="text" name="firstname" placeholder="enter first name">
+                <div class="signup-stage1">
+                    <div class="form-fields-wrapper">
+                        <div class="form-field-wrapper">
+                            <label for="firstname">first name</label>
+                            <input type="text" name="firstname" placeholder="enter first name">
+                        </div>
+                        <div class="form-field-wrapper">
+                            <label for="lastname">last name</label>
+                            <input type="text" name="lastname" placeholder="enter last name">
+                        </div>
                     </div>
-                    <div class="form-field-wrapper">
-                        <label for="lastname">last name</label>
-                        <input type="text" name="lastname" placeholder="enter last name">
+                    <div class="form-fields-wrapper">
+                        <div class="form-field-wrapper">
+                            <label for="dob">date of birth</label>
+                            <input type="text" name="dob" placeholder="enter date of birth">
+                        </div>
+                        <div class="form-field-wrapper">
+                            <label for="email">email</label>
+                            <input type="email" name="email" placeholder="enter email">
+                        </div>
+                    </div>
+                    <div class="form-fields-wrapper">
+                        <div class="form-field-wrapper">
+                            <label for="location">location</label>
+                            <input type="text" name="location" placeholder="enter location">
+                        </div>
+                        <div class="form-field-wrapper">
+                            <label for="gender">gender</label>
+                            <input type="text" name="gender" placeholder="enter gender">
+                        </div>
+                    </div>
+                    <div class="form-fields-wrapper">
+                        <div class="form-field-wrapper">
+                            <label for="password">password</label>
+                            <input type="password" name="password" placeholder="enter password">
+                        </div>
+                        <div class="form-field-wrapper">
+                            <label for="confirm-password">confirm password</label>
+                            <input type="text" name="confirm-password" placeholder="enter password">
+                        </div>
                     </div>
                 </div>
-                <div class="form-fields-wrapper">
-                    <div class="form-field-wrapper">
-                        <label for="dob">date of birth</label>
-                        <input type="text" name="dob" placeholder="enter date of birth">
-                    </div>
-                    <div class="form-field-wrapper">
-                        <label for="email">email</label>
-                        <input type="email" name="email" placeholder="enter email">
+                
+                <div class="signup-stage2 d-none">
+                    <div class="form-avatar-wrapper">
+                        <%=image_tag("profile-icon.png")%>
+                        <p>Click avatar to upload<br>your display picture</p>
                     </div>
                 </div>
-                <div class="form-fields-wrapper">
-                    <div class="form-field-wrapper">
-                        <label for="location">location</label>
-                        <input type="text" name="location" placeholder="enter location">
-                    </div>
-                    <div class="form-field-wrapper">
-                        <label for="gender">gender</label>
-                        <input type="text" name="gender" placeholder="enter gender">
-                    </div>
+
+                 <div class="signup__form__btn signup-stage1-btn">
+                    <button class="grad-stroke-btn">next</button>
                 </div>
-                <div class="form-fields-wrapper">
-                    <div class="form-field-wrapper">
-                        <label for="password">password</label>
-                        <input type="password" name="password" placeholder="enter password">
-                    </div>
-                    <div class="form-field-wrapper">
-                        <label for="confirm-password">confirm password</label>
-                        <input type="text" name="confirm-password" placeholder="enter password">
-                    </div>
+                <div class="signup__form__btn signup-stage2-btn d-none">
+                    <button class="grad-stroke-btn">signup</button>
+                </div>
+
+                <div class="signup__form__divert">
+                    <span>Already signed up? </span><a href="/login">Login now!</a>
                 </div>
             </form>
         </div>
-        <div class="signup__form__btn">
-            <button class="grad-stroke-btn">next</button>
-        </div>
+       
     </section>
 </main>
+
+<script>
+    var stageOneBtn = document.querySelector('.signup-stage1-btn')
+    var stageOneSection = document.querySelector('.signup-stage1')
+    var stageTwoBtn = document.querySelector('.signup-stage2-btn')
+    var stageTwoSection = document.querySelector('.signup-stage2')
+
+    var handleClick = (e) => {
+        e.preventDefault()
+        console.log('hello')
+        $(stageOneBtn).fadeOut('slow')
+        $(stageOneSection).fadeOut('slow')
+        $(stageTwoBtn).delay(520).fadeIn('slow')
+        $(stageTwoSection).delay(520).fadeIn('slow')
+    }
+
+    stageOneBtn.addEventListener('click', handleClick)
+</script>
