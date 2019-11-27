@@ -1,0 +1,58 @@
+// RESETS
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Source Sans Pro';
+    font-size: 18px;
+}
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+// TYPE ---------------------
+@font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900&display=swap');
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 200;
+}
+
+h1 {
+    font-size: 3em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+h2 {
+    font-size: 1.778em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+h3 {
+    font-size: 1.389em;
+}
+h4 {
+    font-size: 1em;
+}
+
+// COLOURS ---------------------
+$purple: #543DFF;
+$blue: #007EB8;
+$light-grey: #202020;
+$dark-grey: #0F0F0F;
