@@ -51,7 +51,7 @@
                 <div class="signup-stage2 d-none">
                     <div class="form-avatar-wrapper">
                         <%=image_tag("profile-icon.png")%>
-                        <p>Click avatar to upload<br>your display picture</p>
+                        <p class="lh-13">Click avatar to upload<br>your display picture</p>
                     </div>
                 </div>
 
@@ -61,7 +61,6 @@
                 <div class="signup__form__btn signup-stage2-btn d-none">
                     <button class="grad-stroke-btn">signup</button>
                 </div>
-
                 <div class="signup__form__divert">
                     <span>Already signed up? </span><a href="/login">Login now!</a>
                 </div>
@@ -82,8 +81,8 @@
         console.log('hello')
         $(stageOneBtn).fadeOut('slow')
         $(stageOneSection).fadeOut('slow')
-        $(stageTwoBtn).delay(520).fadeIn('slow')
-        $(stageTwoSection).delay(520).fadeIn('slow')
+        $(stageTwoBtn).delay(540).fadeIn('slow')
+        $(stageTwoSection).delay(540).fadeIn('slow')
     }
 
     stageOneBtn.addEventListener('click', handleClick)
