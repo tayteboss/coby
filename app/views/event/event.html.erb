@@ -1,4 +1,10 @@
 
+<style>
+    .create-post-form {
+        display: none;
+    }
+
+</style>
 
 <h1 class="event-name"></h1>
 
@@ -8,19 +14,69 @@
 
 <p class="event-date"></p>
 
-<section>
-<h2>Description</h2>
-<p class="event-description"></p>
+<section class="create-post">
+    <button class="create-post-btn">Create Post</button>
+    <form class="create-post-form" action="" method="get">
+    <h2>Create a post</h2>
+        <label for="">Post Title</label><br>
+        <input type="text" name="" id="" ><br>
+        <label for="">Age Group preference</label><br>
+        <select name="age">
+            <option value="any age">any age</option>
+            <option value="under30">between 18 and 30</option>
+            <option value="over30">over 30</option>
+            <option value="over40">over 40</option>
+    </select><br>
+        <label for="">Gender preference</label><br>
+        <select name="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="anyone">anyone</option>
+    </select><br>
+        <label for="">Group size preference</label><br>
+            <input type="text" name="" id="" ><br>
+        <label for="">Description</label><br>
+        <input type="text" name="" id="" ><br>
+        <button>Post</button>
+    </form>
 </section>
 
 
-<script>
+
+
+<section class="active-posts">
+    <h2>Looking for buddies</h2>
+    <% 3.times do %>
+        <article>
+            <h3 class="single-post">Post Title</h3>
+            <p>Prefers anyone under 30</p>
+            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
+            <a href="">Message</a>
+        </article>
+    <% end %>
+</section>
+
+<section class="inactive-posts">
+    <h2>People who found their buddies</h2>
+    <% 3.times do %>
+        <article>
+            <h3 class="single-post">Post Title</h3>
+            <p>Prefer females between age 30 - 50</p>
+            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
+            <a href="">Message</a>
+        </article>
+    <% end %>
+
+</section>
+
+
+<script class="API DATA">
     var eventName = document.querySelector(".event-name")
     var mainImage = document.querySelector(".main-image")
     var eventVenue = document.querySelector(".event-venue")
     var eventVenueLink = document.querySelector(".event-venue-link")
     var eventDate = document.querySelector(".event-date")
-    var eventDescription = document.querySelector(".event-description")
+    var eventId
 
     $.ajax({
     type:"GET",
@@ -36,19 +92,6 @@
         eventVenueLink.href = `https://www.google.com/maps/search/?api=1&query=${result._embedded.venues[0].name.replace(' ', '+')}`
         eventDate.textContent = result.dates.start.localDate + " " + result.dates.start.localTime
 
-
-
-        // var h2 = document.createElement('h2')
-        // h2.textContent = result.name
-        // var h3 = document.createElement('h3')
-        // h3.textContent = result.dates.start.localDate
-        // var h4 = document.createElement('h4')
-        // h4.textContent = result._embedded.venues[0].name
-        // section.appendChild(article)
-        // article.appendChild(img)
-        // article.appendChild(h2)
-        // article.appendChild(h3)
-        // article.appendChild(h4)
         },
     error: (xhr, status, err) => {
         // This time, we do not end up here!
@@ -56,8 +99,22 @@
     }
     })
 
+</script>
 
+<script class="create-form">
+    var createPostSection = document.querySelector('.create-post')
+    var createPostBtn = document.querySelector('.create-post-btn')
+    var createPostForm = document.querySelector('.create-post-form')
 
+    var showCreatePostForm = () => {
+        createPostForm.style.display = "block"
+    }
 
+    var hideCreatePostForm = () => {
+        createPostForm.style.display = "none"
+    }
+
+    createPostBtn.addEventListener('click', showCreatePostForm)
 
 </script>
+
