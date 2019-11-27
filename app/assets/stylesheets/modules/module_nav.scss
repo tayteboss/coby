@@ -1,0 +1,40 @@
+@import "settings/settings_main.scss";
+
+.nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 25px;
+
+    .logo {
+        img {
+            width: 33.3%;
+        }
+    }
+
+    .links {
+        font-size: 0.889em;
+
+        a {
+            text-decoration: none;
+            color: white;
+            padding-left: 13px;
+            transition: opacity 300ms
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        button {
+            padding: 7px 20px;
+            border: none;
+            border-radius: 3px;
+            background-image: linear-gradient(to bottom right, $purple, $blue);
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+        }
+    }
+}
