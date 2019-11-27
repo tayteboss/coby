@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+
+// LAYOUTS
+@import "layouts/layouts_login.scss";
+@import "layouts/layouts_signup.scss";
+
+// MODULES
+@import "modules/module_login.scss";
+
+
+// SETTINGS
+@import "settings/settings_main.scss";
+
+// STATES
+// @import "states/states_weather.scss";
+
+// UTILITIES
+@import "utilities/utilities_btn.scss";
+@import "utilities/utilities_main.scss";
