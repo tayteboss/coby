@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get '/login', to: 'login#index'
   get '/signup', to: 'signup#index'
+  get '/event/details', to: 'event#details'
 end

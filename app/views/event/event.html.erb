@@ -1,24 +1,24 @@
 
 
+<h1></h1>
 
-<h1>Search</h1>
-<section class="result"></section>
+
+
+
+
 
 
 <script>
 
-var section = document.querySelector("section")
-console.log("Search test")
-
+console.log("event test")
 var keyword = "Tash"
 var city = "Melbourne"
 var numResults = "20"
 
-
-
 $.ajax({
   type:"GET",
-  url:`https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&city=${city}&size=${numResults}&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`,
+//   url:`https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&city=${city}&size=${numResults}&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`,
+  url:"https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ",
   async:true,
   dataType: "json",
   success: (resp) => {
@@ -49,6 +49,9 @@ $.ajax({
 
 
 
+
+
+
+
+
 </script>
-
-
