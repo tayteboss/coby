@@ -17,6 +17,7 @@
 
 
 // LAYOUTS
+@import "layouts/layouts_home.scss";
 @import "layouts/layouts_login.scss";
 @import "layouts/layouts_signup.scss";
 @import "layouts/layouts_onboarding.scss";
@@ -24,6 +25,7 @@
 // MODULES
 @import "modules/module_login.scss";
 @import "modules/module_nav.scss";
+@import "modules/module_footer.scss";
 
 // SETTINGS
 @import "settings/settings_main.scss";
@@ -31,6 +33,7 @@
 // UTILITIES
 @import "utilities/utilities_btn.scss";
 @import "utilities/utilities_main.scss";
+
 
 
 

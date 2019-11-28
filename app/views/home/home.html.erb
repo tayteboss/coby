@@ -1,18 +1,62 @@
-<h1>Home</h1>
+<main class="home">
 
-<%= session[:current_user_id] %>
+    <header class="hero">
+        <div class="cta-wrapper">
+            <h1>Find your perfect buddy for the night out</h1>
+            <a href="/events"><button class="prim-btn">See Upcoming Events</button></a>
+        </div>
+    </header>
 
-<script>
-console.log("home test")
+    <section class="about">
+        <div class="graphic-wrapper">
+            <div class="graphic">
+                <div class="graphic__icon">
+                    <%=image_tag("find.png")%>
+                </div>
+                <div class="graphic__sub">
+                    <p>Find events near you</p>
+                </div>
+            </div>
+            <div class="graphic">
+                <div class="graphic__icon">
+                    <%=image_tag("buddy.png")%>
+                </div>
+                <div class="graphic__sub">
+                    <p>Connect with like minded buddies</p>
+                </div>
+            </div>
+            <div class="graphic">
+                <div class="graphic__icon">
+                    <%=image_tag("night.png")%>
+                </div>
+                <div class="graphic__sub">
+                    <p>Have a great night out</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing">
+        <section class="signup-cta">
+            <div class="signup-cta__wrapper">
+                <h1>Lorem ipsum dolor sit hilerm amet!</h1>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi </p>
+                <a href="/signup"><button class="prim-btn">sign up now</button></a>
+            </div>
+        </section>
+        <section class="testimonial">
+            <div class="testimonial__wrapper">
+                <article>
+                    <div class="dp">
+                        <%=image_tag("dp.png")%>
+                    </div>
+                    <div class="snippet">
+                        <h3>Tayte, Kay & Kaitlin recently went to Katy Perry</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
 
 
-
-
-
-
-
-
-
-
-
-</script>
+</main>

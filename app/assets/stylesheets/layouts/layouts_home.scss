@@ -1,0 +1,132 @@
+@import "settings/settings_main.scss";
+
+.home {
+
+
+    .hero {
+        background: url("full-blur-bg.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 400px;
+
+
+        .cta-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+            h1 {
+                line-height: 1.1;
+                color: #fff;
+                width: 650px;
+                text-transform: initial;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    .about {
+
+        background-image: linear-gradient(to bottom right, $purple, $blue);
+        height: 400px;
+
+        .graphic-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            .graphic {
+
+                &__icon {
+                    text-align: center;
+                    
+                    img {
+                        width: 60%;
+                    }
+                }
+
+                &__sub {
+
+                    text-align: center;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .closing {
+
+        display: flex;
+        height: 350px;
+
+        .signup-cta {
+            background-color: #1A1A1A;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__wrapper {
+                width: 80%;
+
+                h1 {
+                    font-size: 2.1em;
+                }
+
+                p {
+                    margin-top: 8px;
+                    margin-bottom: 20px;
+                    opacity: 0.8;
+                }
+
+            }
+        }
+
+        .testimonial {
+            background-color: #CCCCCC;
+            min-width: 50vw;
+
+            &__wrapper {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                article {
+                    background-color: #fff;
+                    display: flex;
+                    width: 75%;
+                    border-radius: 15px;
+
+                    .dp {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 60%;
+
+                        img {
+                            width: 65%;
+                            margin-left: 15px;
+                        }
+                    }
+
+                    .snippet {
+
+                        width: 85%;
+
+                        h3 {
+                            font-size: 0.9em;
+                        }
+                
+                    }
+                }
+            }
+        }
+    }
+}

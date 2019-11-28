@@ -1,4 +1,4 @@
-
+@import "settings/settings_main.scss";
 
 .grad-stroke-btn {
     background: none;
@@ -16,4 +16,20 @@
 .login__form__btn {
     text-align: center;
     margin-top: 35px;
+}
+
+.prim-btn {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 3px;
+    background-image: linear-gradient(to bottom right, $purple, $blue);
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+
+    transition: opacity 300ms;
+}
+
+.prim-btn:hover {
+    opacity: 0.8;
 }
