@@ -4,7 +4,6 @@
     background-color: $light-grey;
     color: #fff;
     padding-left: 50px;
-    overflow-x: scroll;
 
     h3 {
         margin: 0;
@@ -15,6 +14,7 @@
     .article-wrapper {
         padding-bottom: 30px;
         display: flex;
+        overflow-x: scroll;
 
         .event-article {
             width: 350px;

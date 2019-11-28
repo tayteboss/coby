@@ -1,24 +1,33 @@
-# README
+# COBY
+**Find your perfect buddy for the night out**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![coby screenshot](screenshot.jpg)
 
-Things you may want to cover:
+### Explore the app
+<link to go here>
 
-* Ruby version
+## Concept
+<concept here>
 
-* System dependencies
+## Technology & Concepts used
+* Ruby on Rails
+* Ticketmaster API
+* Javascript
+* JQuery
+* AJAX
+* Heroku
+* SASS
 
-* Configuration
+## Challenges
+### Git Collaboration
+You all know what we're talking about...
 
-* Database creation
+### Conventions
+After completing this project we realised the importance of deciding on naming conventions
 
-* Database initialization
+## Lessons Learned
+* Communication is key
+* Don't wait around till components are built by other team mates
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## WIP
+* 

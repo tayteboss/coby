@@ -9,6 +9,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        background-attachment: fixed;
         height: 400px;
 
 
@@ -108,7 +109,7 @@
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
-                        width: 60%;
+                        width: 160px;
 
                         img {
                             width: 65%;
@@ -121,7 +122,7 @@
                         width: 85%;
 
                         h3 {
-                            font-size: 0.9em;
+                            font-size: 1em;
                         }
                 
                     }
