@@ -1,51 +1,122 @@
-
-
-
 <h1>Search</h1>
-<section class="result"></section>
 
+<section class="search-form">
+  <form class="create-post-form" action="" method="get">
+    <input class="form-input" placeholder="Type here to search for an event" type="text" name="search" id="" ><br>
+    <button>Search</button>
+    </form>
+</section>
+
+<section class="search-result">
+  <h2>Search Results</h2>
+  <div class="results"></div>
+</section>
+
+<section class="all-melbourne-events">
+  <h2>All Melbourne Events</h2>
+  <div class="results"></div>
+</section>
 
 <script>
+  var searchResult = document.querySelector(".search-result")
+  var allMelbourneEvents = document.querySelector(".all-melbourne-events")
+  var form = document.querySelector('.create-post-form')
+  var formInput = document.querySelector('.form-input')
+  var appendingSection = allMelbourneEvents
 
-var section = document.querySelector("section")
-console.log("Search test")
+  var updateRequestData = function() {
+    eventData = [
+      {
+        customSearch: {
+          "keyword": `${formInput.value}`, 
+          "city": "Melbourne", 
+          "numResults": "3", 
+          // "startDateTime": "2019-11-29T09:00:00Z", //calendar based
+          // "endDateTime": "2019-12-02T09:00:00Z", //calendar based
+          "sortBy": "relevance,asc",
+          "resultClass": "search-result",
+          "heading": "Search Results" 
+        }
+      },
+      {
+        defaultResults: { 
+          "city": "Melbourne", 
+          "numResults": "3", 
+          "sortBy": "relevance,asc",
+          "resultClass": "all-melbourne-result",
+          "heading": "All Events In Melbourne" 
+        }
+      }
+    ]
 
-var keyword = "Tash"
-var city = "Melbourne"
-var numResults = "20"
+    customSearchRequest = {
+      url:`https://app.ticketmaster.com/discovery/v2/events?locale=*&segmentName=music&size=${eventData[0].customSearch.numResults}&keyword=${eventData[0].customSearch.keyword}&includeTest=no&sort=${eventData[0].customSearch.sortBy}&city=${eventData[0].customSearch.city}&countryCode=AU&includeSpellcheck=yes&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`
+    }
+
+    allMelbourneEventsRequest = {
+      url:`https://app.ticketmaster.com/discovery/v2/events?locale=*&segmentName=music&size=${eventData[1].defaultResults.numResults}&includeTest=no&sort=${eventData[1].defaultResults.sortBy}&city=${eventData[1].defaultResults.city}&countryCode=AU&includeSpellcheck=yes&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`
+    }
+  }
+
+  updateRequestData()
+
+  var createEvent = (result, data) => {
+    return `
+      <article class="${data.resultClass}-event">
+        <a href="/event/details?=${result.id}"><img class="event-image" width="400px" src="${result.images[0].url}" alt=""></a>
+        <a href="/event/details?=${result.id}"><h2 class="event-name">${result.name}</h2></a>
+        <p class="event-venue">${result._embedded.venues[0].name}</p>
+        <p class="event-date">${result.dates.start.localDate}</p>
+      </article>
+    `
+  }
+  
+  var runApi = (request, data) => {
+    $.ajax(request).done((resp) => {
+      if (resp._embedded) {
+        resp._embedded.events.forEach(result => {
+          var html = createEvent(result, data)
+          $(appendingSection).find('.results').append(html)
+        })
+      } else {
+        var noResultMessage = `<h3>There were no events found for the search "${formInput.value}".</h3>`
+        $(appendingSection).find('.results').append(noResultMessage)
+        allMelbourneEvents.style.display = "block"
+        runApi(allMelbourneEventsRequest, data)
+      }
+    })
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault()
+    appendingSection = searchResult
+    $(appendingSection).find('.results').empty()
+    allMelbourneEvents.style.display = "none"
+    searchResult.style.display = "block"
+    updateRequestData()
+    var data = eventData[0].customSearch
+    runApi(customSearchRequest, data)
+  })
+
+  // runs immediately
+  searchResult.style.display = "none"
+  var data = eventData[1].defaultResults
+  runApi(allMelbourneEventsRequest, data)
 
 
 
-$.ajax({
-  type:"GET",
-  url:`https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&city=${city}&size=${numResults}&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`,
-  async:true,
-  dataType: "json",
-  success: (resp) => {
-            // Parse the response.
-            // Do other things.
-            resp._embedded.events.forEach(function (result) {
-                var article = document.createElement('article')
-                var img = document.createElement('img')
-                img.src = result.images[0].url
-                img.style.height = "200px"
-                var h2 = document.createElement('h2')
-                h2.textContent = result.name
-                var h3 = document.createElement('h3')
-                h3.textContent = result.dates.start.localDate
-                var h4 = document.createElement('h4')
-                h4.textContent = result._embedded.venues[0].name
-                section.appendChild(article)
-                article.appendChild(img)
-                article.appendChild(h2)
-                article.appendChild(h3)
-                article.appendChild(h4)
-            })},
-  error: (xhr, status, err) => {
-              // This time, we do not end up here!
-              console.log(xhr, status, err)
-           }
-})
+  // var createDate = () => {
+  //   var currentDate = new Date(); 
+  //     var dateTime = currentDate.getDate() + "-"
+  //       + (currentDate.getMonth()+1)  + "-" 
+  //       + currentDate.getFullYear() + "T"  
+  //       + currentDate.getHours() + ":"  
+  //       + currentDate.getMinutes() + ":" 
+  //       + currentDate.getSeconds() + "Z"
+
+  //     console.log(dateTime)
+  //     return dateTime
+  // }
 
 
 
