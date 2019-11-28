@@ -14,29 +14,29 @@
 
 <p class="event-date"></p>
 
-<section class="create-post">
+<section class="create-post-section">
     <button class="create-post-btn">Create Post</button>
     <form class="create-post-form" action="" method="get">
     <h2>Create a post</h2>
         <label for="">Post Title</label><br>
-        <input type="text" name="" id="" ><br>
+        <input type="text" name="post-title" id="" ><br>
         <label for="">Age Group preference</label><br>
-        <select name="age">
+        <select name="age-preference">
             <option value="any age">any age</option>
             <option value="under30">between 18 and 30</option>
             <option value="over30">over 30</option>
             <option value="over40">over 40</option>
-    </select><br>
+        </select><br>
         <label for="">Gender preference</label><br>
-        <select name="gender">
+        <select name="gender-preference">
             <option value="male">male</option>
             <option value="female">female</option>
             <option value="anyone">anyone</option>
-    </select><br>
+        </select><br>
         <label for="">Group size preference</label><br>
-            <input type="text" name="" id="" ><br>
+            <input type="text" name="group-size" id="" ><br>
         <label for="">Description</label><br>
-        <input type="text" name="" id="" ><br>
+        <input type="text" name="post-description" id="" ><br>
         <button>Post</button>
     </form>
 </section>
@@ -102,7 +102,7 @@
 </script>
 
 <script class="create-form">
-    var createPostSection = document.querySelector('.create-post')
+    var createPostSection = document.querySelector('.create-post-section')
     var createPostBtn = document.querySelector('.create-post-btn')
     var createPostForm = document.querySelector('.create-post-form')
 
