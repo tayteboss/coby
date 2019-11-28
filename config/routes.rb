@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
   get '/', to: 'home#home'
-  get '/search', to: 'search#search'
+  
   get '/about', to: 'about#index'
   get '/onboarding', to: 'onboarding#index'
   get '/profile', to: 'profile#index'
 
-  get '/event', to: 'event#home'
-  get '/event/details', to: 'event#details'
+  get '/events', to: 'events#index'
+  get '/events/details', to: 'events#details'
 
   get '/login', to: 'session#index'
   post '/login', to: 'session#verify_account'
