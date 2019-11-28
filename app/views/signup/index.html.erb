@@ -4,7 +4,8 @@
             <h2>Sign Up</h2>
         </div>
         <div class="signup__form__fields">
-            <form action="">
+            <form action="/signup" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <div class="signup-stage1">
                     <div class="form-fields-wrapper">
                         <div class="form-field-wrapper">
@@ -43,7 +44,7 @@
                         </div>
                         <div class="form-field-wrapper">
                             <label for="confirm-password">confirm password</label>
-                            <input type="text" name="confirm-password" placeholder="enter password">
+                            <input type="password" name="confirm_password" placeholder="enter password">
                         </div>
                     </div>
                 </div>
@@ -64,6 +65,7 @@
                 <div class="signup__form__divert">
                     <span>Already signed up? </span><a href="/login">Login now!</a>
                 </div>
+
             </form>
         </div>
        

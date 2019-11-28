@@ -4,7 +4,8 @@
             <h2>Login</h2>
         </div>
         <div class="login__form__fields">
-            <form action="">
+            <form action="/login" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <div class="form-fields-wrapper">
                     <div class="form-field-wrapper">
                         <label for="email">email</label>
@@ -21,6 +22,7 @@
                 <div class="login__form__divert">
                     <span>Don't have an account? </span><a href="/signup">Signup now</a>
                 </div>
+
             </form>
         </div>
     </section>
