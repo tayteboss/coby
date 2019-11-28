@@ -13,9 +13,15 @@
 
             &__profile {
                 width: 150px;
+                text-align: center;
 
                 img {
                     width: 100%;
+                }
+
+                a {
+                    color: #fff;
+                    font-size: 12px;
                 }
             }
 
