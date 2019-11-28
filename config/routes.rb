@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   get '/about', to: 'about#index'
   get '/onboarding', to: 'onboarding#index'
+
   get '/profile', to: 'profile#index'
+  get '/profile/edit', to: 'profile#edit'
 
   get '/events', to: 'events#index'
   get '/events/details', to: 'events#details'
