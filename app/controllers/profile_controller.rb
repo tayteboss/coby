@@ -4,4 +4,8 @@ class ProfileController < ApplicationController
         render :profile
     end
 
+    def edit
+        render :edit
+    end
+
 end
