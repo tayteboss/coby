@@ -17,6 +17,7 @@
     
   </head>
 
+
   <nav class="nav nav--out">
     <div class="logo">
       <a href="/"><%=image_tag("logo-nav.png")%></a>
@@ -30,7 +31,26 @@
     </div>
   </nav>
 
+  <script>
+    // <nav class="nav nav--out">
+    //   <div class="logo">
+    //       <img src="" alt="">
+    //   </div>
+    //   <div class="links">
+    //     <a href="/">Home</a>
+    //     <a href="/about">About</a>
+    //     <a href="/event">Events</a>
+    //     <a href="/login">Login</a>
+    //     <img src="logout-icon.svg" alt="">
+    //   </div>
+    // </nav>
+  </script>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <%=image_tag("logo-nav.png")%>
+  </footer>
 </html>
