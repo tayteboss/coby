@@ -11,5 +11,26 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ * require layout
  *= require_self
  */
+
+
+// LAYOUTS
+@import "layouts/layouts_login.scss";
+@import "layouts/layouts_signup.scss";
+@import "layouts/layouts_onboarding.scss";
+
+// MODULES
+@import "modules/module_login.scss";
+@import "modules/module_nav.scss";
+
+// SETTINGS
+@import "settings/settings_main.scss";
+
+// UTILITIES
+@import "utilities/utilities_btn.scss";
+@import "utilities/utilities_main.scss";
+
+
+

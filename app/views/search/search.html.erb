@@ -1,0 +1,54 @@
+
+
+
+<h1>Search</h1>
+<section class="result"></section>
+
+
+<script>
+
+var section = document.querySelector("section")
+console.log("Search test")
+
+var keyword = "Tash"
+var city = "Melbourne"
+var numResults = "20"
+
+
+
+$.ajax({
+  type:"GET",
+  url:`https://app.ticketmaster.com/discovery/v2/events.json?segmentName=music&city=${city}&size=${numResults}&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`,
+  async:true,
+  dataType: "json",
+  success: (resp) => {
+            // Parse the response.
+            // Do other things.
+            resp._embedded.events.forEach(function (result) {
+                var article = document.createElement('article')
+                var img = document.createElement('img')
+                img.src = result.images[0].url
+                img.style.height = "200px"
+                var h2 = document.createElement('h2')
+                h2.textContent = result.name
+                var h3 = document.createElement('h3')
+                h3.textContent = result.dates.start.localDate
+                var h4 = document.createElement('h4')
+                h4.textContent = result._embedded.venues[0].name
+                section.appendChild(article)
+                article.appendChild(img)
+                article.appendChild(h2)
+                article.appendChild(h3)
+                article.appendChild(h4)
+            })},
+  error: (xhr, status, err) => {
+              // This time, we do not end up here!
+              console.log(xhr, status, err)
+           }
+})
+
+
+
+</script>
+
+

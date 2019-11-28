@@ -4,10 +4,31 @@
     <title>Coby</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
+
+  <nav class="nav nav--out">
+    <div class="logo">
+      <a href="/"><%=image_tag("logo-nav.png")%></a>
+    </div>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/event">Events</a>
+      <a href="/login">Login</a>
+      <a href="/signup"><button class="nav-btn-signup">Sign Up</button></a>
+    </div>
+  </nav>
 
   <body>
     <%= yield %>

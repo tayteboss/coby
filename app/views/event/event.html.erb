@@ -1,0 +1,63 @@
+
+
+<h1 class="event-name"></h1>
+
+<img class="main-image" src="" alt="">
+
+<a target="_blank" class="event-venue-link" href=""><p class="event-venue"></p></a>
+
+<p class="event-date"></p>
+
+<section>
+<h2>Description</h2>
+<p class="event-description"></p>
+</section>
+
+
+<script>
+    var eventName = document.querySelector(".event-name")
+    var mainImage = document.querySelector(".main-image")
+    var eventVenue = document.querySelector(".event-venue")
+    var eventVenueLink = document.querySelector(".event-venue-link")
+    var eventDate = document.querySelector(".event-date")
+    var eventDescription = document.querySelector(".event-description")
+
+    $.ajax({
+    type:"GET",
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?id=16vGZ4srkG7lNML&size=1&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ",
+    async:true,
+    dataType: "json",
+    success: (resp) => {
+        result = resp._embedded.events[0]
+        eventName.textContent = result.name
+        mainImage.src = result.images[0].url
+        mainImage.style.height = "400px"
+        eventVenue.textContent = result._embedded.venues[0].name
+        eventVenueLink.href = `https://www.google.com/maps/search/?api=1&query=${result._embedded.venues[0].name.replace(' ', '+')}`
+        eventDate.textContent = result.dates.start.localDate + " " + result.dates.start.localTime
+
+
+
+        // var h2 = document.createElement('h2')
+        // h2.textContent = result.name
+        // var h3 = document.createElement('h3')
+        // h3.textContent = result.dates.start.localDate
+        // var h4 = document.createElement('h4')
+        // h4.textContent = result._embedded.venues[0].name
+        // section.appendChild(article)
+        // article.appendChild(img)
+        // article.appendChild(h2)
+        // article.appendChild(h3)
+        // article.appendChild(h4)
+        },
+    error: (xhr, status, err) => {
+        // This time, we do not end up here!
+        console.log(xhr, status, err)
+    }
+    })
+
+
+
+
+
+</script>
