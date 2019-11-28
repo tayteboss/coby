@@ -8,4 +8,21 @@ class ProfileController < ApplicationController
         render :edit
     end
 
+    def update
+
+        user = User.find_by(id:"#{params[:userid]}")
+        user.update(
+            first_name:"#{params[:firstname]}", 
+            last_name:"#{params[:lastname]}", 
+            dob:"#{params[:dob]}", 
+            email:"#{params[:email]}",
+            location:"#{params[:location]}",
+            gender:"#{params[:gender]}",
+        )
+    
+
+    redirect_to '/profile'
+
+    end
+
 end

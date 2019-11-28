@@ -1,4 +1,4 @@
-
+<% user = current_user %>
 
 <main class="signup">
     <section class="signup__form">
@@ -6,49 +6,41 @@
             <h2>Edit Details</h2>
         </div>
         <div class="signup__form__fields">
-            <form action="/signup" method="post">
+            <form action="/profile/update" method="post">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden" name="userid" value="<%= user.id %>">
                 <div class="signup-stage1">
                     <div class="form-fields-wrapper">
                         <div class="form-field-wrapper">
                             <label for="firstname">first name</label>
-                            <input type="text" name="firstname" placeholder="enter first name">
+                            <input type="text" name="firstname" placeholder="enter first name" value="<%= user.first_name %>">
                         </div>
                         <div class="form-field-wrapper">
                             <label for="lastname">last name</label>
-                            <input type="text" name="lastname" placeholder="enter last name">
+                            <input type="text" name="lastname" placeholder="enter last name" value="<%= user.last_name %>">
                         </div>
                     </div>
                     <div class="form-fields-wrapper">
                         <div class="form-field-wrapper">
                             <label for="dob">date of birth</label>
-                            <input type="text" name="dob" placeholder="enter date of birth">
+                            <input type="text" name="dob" placeholder="enter date of birth" value="<%= user.dob %>">
                         </div>
                         <div class="form-field-wrapper">
                             <label for="email">email</label>
-                            <input type="email" name="email" placeholder="enter email">
+                            <input type="email" name="email" placeholder="enter email" value="<%= user.email %>">
                         </div>
                     </div>
                     <div class="form-fields-wrapper">
                         <div class="form-field-wrapper">
                             <label for="location">location</label>
-                            <input type="text" name="location" placeholder="enter location">
+                            <input type="text" name="location" placeholder="enter location" value="<%= user.location %>">
                         </div>
                         <div class="form-field-wrapper">
                             <label for="gender">gender</label>
-                            <input type="text" name="gender" placeholder="enter gender">
+                            <input type="text" name="gender" placeholder="enter gender" value="<%= user.gender %>">
                         </div>
                     </div>
-                    <div class="form-fields-wrapper">
-                        <div class="form-field-wrapper">
-                            <label for="password">password</label>
-                            <input type="password" name="password" placeholder="enter password">
-                        </div>
-                        <div class="form-field-wrapper">
-                            <label for="confirm-password">confirm password</label>
-                            <input type="password" name="confirm_password" placeholder="enter password">
-                        </div>
-                    </div>
+                   
                 </div>
                 
                 <div class="signup-stage2 d-none">

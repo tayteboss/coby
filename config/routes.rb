@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/profile', to: 'profile#index'
   get '/profile/edit', to: 'profile#edit'
 
+  post '/profile/update', to: 'profile#update'
+
   get '/events', to: 'events#index'
   get '/events/details', to: 'events#details'
 
