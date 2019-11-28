@@ -1,27 +1,38 @@
-<h1>Sesdsdsdfarch</h1>
 
-<section class="search-form">
-  <form class="create-post-form" action="" method="get">
-    <input class="form-input" placeholder="Type here to search for an event" type="text" name="search" id="" ><br>
-    <button>Search</button>
-    </form>
-</section>
+<main class="events">
 
-<section class="search-result">
-  <h2>Search Results</h2>
-  <div class="results"></div>
-</section>
+  <header class="events__hero">
+        <section class="search-form">
+          <form class="create-post-form" action="" method="get">
+            <input class="form-input" placeholder="Type here to search for an event" type="text" name="search" id="" ><br>
+          </form>
+          <a class="all-events-tag d-none" href="/events">back to all events</a>
+        </section>
+  </header>
 
-<section class="all-melbourne-events">
-  <h2>All Melbourne Events</h2>
-  <div class="results"></div>
-</section>
+  <section class="backdrop">
+  
+    <section class="carousel all-melbourne-events">
+      <h3>All Events in Melbourne</h3>
+      <div class="article-wrapper results"></div>
+    </section>
+
+    <section class="carousel search-result">
+      <h3>Search Results</h3>
+      <div class="article-wrapper results"></div>
+    </section>
+  
+  </section>
+
+</main>
+
 
 <script>
   var searchResult = document.querySelector(".search-result")
   var allMelbourneEvents = document.querySelector(".all-melbourne-events")
   var form = document.querySelector('.create-post-form')
   var formInput = document.querySelector('.form-input')
+  var allEvents = document.querySelector('.all-events-tag')
   var appendingSection = allMelbourneEvents
 
   var updateRequestData = function() {
@@ -30,7 +41,7 @@
         customSearch: {
           "keyword": `${formInput.value}`, 
           "city": "Melbourne", 
-          "numResults": "3", 
+          "numResults": "10", 
           // "startDateTime": "2019-11-29T09:00:00Z", //calendar based
           // "endDateTime": "2019-12-02T09:00:00Z", //calendar based
           "sortBy": "relevance,asc",
@@ -41,7 +52,7 @@
       {
         defaultResults: { 
           "city": "Melbourne", 
-          "numResults": "3", 
+          "numResults": "10", 
           "sortBy": "relevance,asc",
           "resultClass": "all-melbourne-result",
           "heading": "All Events In Melbourne" 
@@ -62,11 +73,19 @@
 
   var createEvent = (result, data) => {
     return `
-      <article class="${data.resultClass}-event">
-        <a href="/events/details?=${result.id}"><img class="event-image" width="400px" src="${result.images[0].url}" alt=""></a>
-        <a href="/events/details?=${result.id}"><h2 class="event-name">${result.name}</h2></a>
-        <p class="event-venue">${result._embedded.venues[0].name}</p>
-        <p class="event-date">${result.dates.start.localDate}</p>
+      <article class="event-article ${data.resultClass}-event">
+          <div class="event-article__img-wrapper">
+              <a href="/events/details?id=${result.id}"><img src='${result.images[0].url}' /></a>
+          </div>
+          <div class="event-article__details">
+              <div class="title-location">
+                  <a href="/events/details?id=${result.id}"><h4>${result.name}</h4></a>
+                  <span>${result._embedded.venues[0].name}</span><span> • </span><span>24 potential buddies</span>
+              </div>
+              <div class="date">
+                  <p>${result.dates.start.localDate}</p>
+              </div>
+          </div>
       </article>
     `
   }
@@ -91,8 +110,11 @@
     event.preventDefault()
     appendingSection = searchResult
     $(appendingSection).find('.results').empty()
-    allMelbourneEvents.style.display = "none"
-    searchResult.style.display = "block"
+
+    $(allMelbourneEvents).hide('slow')
+    $(searchResult).delay(530).show('slow')
+    $(allEvents).delay(530).show('slow')
+
     updateRequestData()
     var data = eventData[0].customSearch
     runApi(customSearchRequest, data)
@@ -102,6 +124,19 @@
   searchResult.style.display = "none"
   var data = eventData[1].defaultResults
   runApi(allMelbourneEventsRequest, data)
+
+
+
+
+
+  var hideSearch = (e) => {
+    e.preventDefault()
+    $(searchResult).hide('slow')
+    $(allEvents).show('slow')
+    $(allMelbourneEvents).delay(530).show('slow')
+  }
+
+  allEvents.addEventListener('click', hideSearch)
 
 
 
@@ -118,8 +153,8 @@
   //     return dateTime
   // }
 
-
-
 </script>
+
+
 
 
