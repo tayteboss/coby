@@ -1,0 +1,55 @@
+.profile {
+
+    &__hero {
+        background-color: #0F0F0F;
+        height: 330px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 100px;
+
+        .user-details {
+            display: flex;
+
+            &__profile {
+                width: 150px;
+                text-align: center;
+
+                img {
+                    width: 100%;
+                }
+
+                a {
+                    color: #fff;
+                    font-size: 12px;
+                }
+            }
+
+            &__name {
+                margin-left: 25px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                bottom: 10px;
+
+                h1 {
+                    color: #fff;
+                }
+
+                form {
+                    input {
+                        background: none;
+                        border: none;
+                        font-size: 14px;
+                        color: #fff;
+                    }
+                }
+                
+
+            }
+        }
+
+    }
+
+}

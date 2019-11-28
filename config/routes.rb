@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get '/signup', to: 'signup#index'
   get '/onboarding', to: 'onboarding#index'
 
-  get '/event/', to: 'event#home'
+  get '/event', to: 'event#home'
   get '/event/details', to: 'event#details'
- 
+
+  get '/profile', to: 'profile#index'
 
   post '/signup', to: 'signup#create_user'
   post '/login', to: 'login#verify_account'
+
 end
