@@ -1,4 +1,4 @@
-<h1>Search</h1>
+<h1>Sesdsdsdfarch</h1>
 
 <section class="search-form">
   <form class="create-post-form" action="" method="get">
@@ -63,8 +63,8 @@
   var createEvent = (result, data) => {
     return `
       <article class="${data.resultClass}-event">
-        <a href="/event/details?=${result.id}"><img class="event-image" width="400px" src="${result.images[0].url}" alt=""></a>
-        <a href="/event/details?=${result.id}"><h2 class="event-name">${result.name}</h2></a>
+        <a href="/events/details?=${result.id}"><img class="event-image" width="400px" src="${result.images[0].url}" alt=""></a>
+        <a href="/events/details?=${result.id}"><h2 class="event-name">${result.name}</h2></a>
         <p class="event-venue">${result._embedded.venues[0].name}</p>
         <p class="event-date">${result.dates.start.localDate}</p>
       </article>
