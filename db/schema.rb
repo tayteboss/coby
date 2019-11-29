@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_001251) do
+ActiveRecord::Schema.define(version: 2019_11_28_224747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_001251) do
     t.string "gender"
     t.text "bio"
     t.string "location"
+    t.string "avatar"
   end
 
   add_foreign_key "posts", "events"
