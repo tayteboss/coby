@@ -8,6 +8,8 @@ class EventsController < ApplicationController
     def details
         show_event(params[:id])
         show_posts(params[:id])
+        show_inactive_posts(params[:id])
+
         # Post.find_by(event_id: params)
         render :details
     end
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
             gender_preference: params[:gender_preference],
             group_size: params[:group_size],
         )
-        redirect_to '/events/details'
+        redirect_to "/events/details?id=#{params[:id]}"
     end
     def create_event
         Event.create(
@@ -56,17 +58,18 @@ class EventsController < ApplicationController
     end
 
     def show_posts (id)
-        if @active_posts.nil?
-            @no_posts = "There are no posts for this event yet. Be the first to post!"
-        end
-        @event_id = Event.get_event(params[:id]).id
+        @event_id = Event.get_event(params[:id])
         @active_posts = Post.active_posts(@event_id)
-        @user_id = @active_posts.map { |post| post.user_id }
-        @users = @user_id.map { |user| User.get_user(user))
+        @user_names = User.active_posts(@event_id).pluck(:first_name)
         
     end
 
-
+    def show_inactive_posts (id)
+        @event_id = Event.get_event(params[:id])
+        @inactive_posts = Post.inactive_posts(@event_id)
+        @user_names = User.inactive_posts(@event_id).pluck(:first_name)
+        
+    end
 
 
 

@@ -97,33 +97,39 @@
 
 <section class="active-posts">
     <h2>Find a buddy</h2>
-    <%# if @active_posts.nil? %>
-        <h3><%#= @no_posts %></h3>
-    <%# else %>
-        <% @active_posts.each do |post| %>
+    <% if @active_posts.empty? %>
+        <h3>There are no posts for this event yet. Be the first to post!</h3>
+    <% else %>
+        <% @active_posts.each_with_index do |post, num| %>
             <article>
                 <h3 class="post-title"><%= post.post_title %></h3>
-                <p>Posted By: <%= @users %></p>
+                <p>Posted By: <%= @user_names[num] %></p>
                 <p><%= post.age_preference %></p>
                 <p><%= post.gender_preference %></p>
                 <p><%= post.group_size %></p>
-                <p class="post-description"><%= post.post_description %></p>
+                <p class="post-description"><%= post.description %></p>
                 <a href="">Message</a>
             </article>
         <% end %>
-    <%# end %>
+    <% end %>
 
 </section>
 
 <section class="inactive-posts">
     <h2>People who found their buddies</h2>
-    <% 3.times do %>
-        <article>
-            <h3 class="single-post">Post Title</h3>
-            <p>Prefer females between age 30 - 50</p>
-            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
-            <a href="">Message</a>
-        </article>
+    <% if @inactive_posts.empty? %>
+    <h3>No matches yet!</h3>
+    <% else %>
+        <% @inactive_posts.each_with_index do |post, num| %>
+            <article>
+                 <h3 class="post-title"><%= post.post_title %></h3>
+                <p>Posted By: <%= @user_names[num] %></p>
+                <p><%= post.age_preference %></p>
+                <p><%= post.gender_preference %></p>
+                <p><%= post.group_size %></p>
+                <p class="post-description"><%= post.description %></p>
+            </article>
+        <% end %>
     <% end %>
 
 </section>
