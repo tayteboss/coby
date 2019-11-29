@@ -13,9 +13,12 @@
 
     .article-wrapper {
         padding-bottom: 30px;
+        display: flex;
+        overflow-x: scroll;
 
         .event-article {
             width: 350px;
+            margin-right: 25px;
 
             &__img-wrapper {
 
@@ -30,6 +33,10 @@
                 
                 .title-location {
 
+                    a {
+                        color: #fff;
+                    }
+
                     h4 {
                         margin: 0;
                         margin-top: 5px;
@@ -39,10 +46,14 @@
                         font-size: 12px;
                         opacity: 0.6;
                     }
+                }
+
+                .date {
 
                     p {
-                        margin: 0;
+                        margin-top: 5px;
                     }
+
                 }
             }
         }

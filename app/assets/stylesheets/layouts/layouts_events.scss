@@ -1,0 +1,56 @@
+.events {
+
+    &__hero {
+        background: url("full-onboard-bg.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+        height: 200px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .search-form {
+
+            .create-post-form {
+
+                input {
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    font-size: 34px;
+                    font-weight: 700;
+                    width: 100vw;
+                    text-align: center;
+                    position: relative;
+                    top: 10px;
+
+                }
+                input::placeholder {
+                    color: #fff;
+                    opacity: 0.8;
+                }
+            }
+
+        }
+    }
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-events-tag {
+    color: #fff;
+    opacity: 0.5;
+    text-align: center;
+    margin-top: 20px;
+    transition: opacity 300ms;
+}
+
+.all-events-tag:hover {
+    opacity: 1;
+}
