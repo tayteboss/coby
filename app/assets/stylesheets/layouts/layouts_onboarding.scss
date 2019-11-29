@@ -1,12 +1,28 @@
-
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 74%}
+    50%{background-position:100% 27%}
+    100%{background-position:0% 74%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 74%}
+    50%{background-position:100% 27%}
+    100%{background-position:0% 74%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 74%}
+    50%{background-position:100% 27%}
+    100%{background-position:0% 74%}
+}
 
 .onboarding {
 
-    background: url("full-onboard-bg.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: linear-gradient(290deg, #030a21, #0e1c3e, #081b48, #3e3970, #47467a);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 26s ease infinite;
+    -moz-animation: AnimationName 26s ease infinite;
+    animation: AnimationName 26s ease infinite;
+
 
     width: 100vw;
     height: 100vh;

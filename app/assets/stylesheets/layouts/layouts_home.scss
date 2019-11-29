@@ -1,5 +1,31 @@
 @import "settings/settings_main.scss";
 
+
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 45%}
+    50%{background-position:100% 56%}
+    100%{background-position:0% 45%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 45%}
+    50%{background-position:100% 56%}
+    100%{background-position:0% 45%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 45%}
+    50%{background-position:100% 56%}
+    100%{background-position:0% 45%}
+}
+
+@keyframes PulseUp {
+    0% { -webkit-transform: scale(1)}
+    70% {-webkit-transform: scale(1.09)}
+    100% {-webkit-transform: scale(1.07)}
+}
+
+
 .home {
 
 
@@ -33,7 +59,8 @@
 
     .about {
 
-        background-image: linear-gradient(to bottom right, $purple, $blue);
+        background: linear-gradient(204deg, #007eb8, #543dff, #5c52a7, #0037ff);
+        background-size: 800% 800%;
         height: 400px;
 
         .graphic-wrapper {
@@ -44,11 +71,21 @@
 
             .graphic {
 
+                cursor: pointer;
+                transition: opacity 300ms;
+
                 &__icon {
                     text-align: center;
                     
                     img {
                         width: 60%;
+                    }
+
+                    img:hover {
+                        -webkit-animation: PulseUp 400ms ease;
+                        -moz-animation: PulseUp 400ms ease;
+                        animation: PulseUp 400ms ease;
+                        animation-fill-mode: forwards;
                     }
                 }
 
@@ -65,6 +102,7 @@
 
         display: flex;
         height: 350px;
+        margin-bottom: 200px;
 
         .signup-cta {
             background-color: #1A1A1A;

@@ -51,12 +51,33 @@
                         <%=image_tag("dp.png")%>
                     </div>
                     <div class="snippet">
-                        <h3>Tayte, Kay & Kaitlin recently went to Katy Perry</h3>
+                        <h3>Tayte, Kay & Kaitlin recently went to Katy Perry together</h3>
                     </div>
                 </article>
             </div>
         </section>
     </section>
 
-
 </main>
+
+
+<script>
+
+var graphics = document.querySelectorAll('.graphic')
+
+graphics.forEach((graphic) => {
+    graphic.addEventListener('mouseover', (event) => {
+        graphics.forEach((e) => {
+            e.classList.add('opacity-6')
+            graphic.classList.remove('opacity-6')
+        })
+    })
+    graphic.addEventListener('mouseout', (event) => {
+        graphics.forEach((e) => {
+            e.classList.remove('opacity-6')
+        })
+    })
+})
+
+
+</script>
