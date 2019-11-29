@@ -40,3 +40,15 @@
 .prim-btn:hover {
     opacity: 0.8;
 }
+
+.white-btn {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+    color: $blue;
+    cursor: pointer;
+    font-size: 13px;
+
+    transition: opacity 300ms;
+}
