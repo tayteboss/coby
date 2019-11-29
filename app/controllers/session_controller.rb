@@ -9,6 +9,8 @@ class SessionController < ApplicationController
 
         if user == user.authenticate("#{params[:password]}")
             session[:current_user_id] = user.id
+            session[:current_user_first_name] = user.first_name
+
             redirect_to '/'
         else
             redirect_to '/login'
