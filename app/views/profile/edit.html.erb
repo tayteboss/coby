@@ -6,7 +6,7 @@
             <h2>Edit Details</h2>
         </div>
         <div class="signup__form__fields">
-            <form action="/profile/update" method="post">
+            <form action="/profile/update" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <input type="hidden" name="userid" value="<%= user.id %>">
                 <div class="signup-stage1">
@@ -45,8 +45,11 @@
                 
                 <div class="signup-stage2 d-none">
                     <div class="form-avatar-wrapper">
-                        <%=image_tag("profile-icon.png")%>
-                        <p class="lh-13">Click avatar to upload<br>your display picture</p>
+                        <label for="file-input">
+                            <%=image_tag("profile-icon.png")%>
+                        </label>
+                        <input id="file-input" type="file" name="avatar" >
+                        <p class="lh-13">Click avatar to change<br>your display picture</p>
                     </div>
                 </div>
 
@@ -54,7 +57,7 @@
                     <button class="grad-stroke-btn">next</button>
                 </div>
                 <div class="signup__form__btn signup-stage2-btn d-none">
-                    <button class="grad-stroke-btn">signup</button>
+                    <button class="grad-stroke-btn">update</button>
                 </div>
                 <div class="signup__form__divert">
                     <a href="/profile">Cancel</a>

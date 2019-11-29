@@ -13,10 +13,13 @@ class SignupController < ApplicationController
             last_name: params[:lastname],
             dob: params[:dob],
             gender: params[:gender],
-            location: params[:location]
+            location: params[:location],
+            avatar: params[:avatar]
         )
 
         redirect_to '/onboarding'
     end
+
+
 
 end
