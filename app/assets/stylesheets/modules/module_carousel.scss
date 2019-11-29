@@ -21,15 +21,23 @@
             margin-right: 25px;
 
             &__img-wrapper {
+                height: 196px;
+                overflow: hidden;
 
                 img {
                     width: 350px;
+                    transition: transform 300ms;
+                }
+
+                img:hover {
+                    transform: scale(1.1)
                 }
             }
 
             &__details {
                 display: flex;
                 justify-content: space-between;
+                margin-top: 7px;
                 
                 .title-location {
 

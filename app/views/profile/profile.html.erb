@@ -17,25 +17,137 @@
         </div>
     </header>
 
-    <section class="carousel">
-        <h3>Upcoming Events</h3>
-        <div class="article-wrapper">
-            <article class="event-article">
-                <div class="event-article__img-wrapper">
-                    <%=image_tag("thumb.jpg")%>
-                </div>
-                <div class="event-article__details">
-                    <div class="title-location">
-                        <h4>Flight Facilities</h4>
-                        <span>Corner Hotel</span><span> • </span><span>24 potential buddies</span>
-                    </div>
-                    <div class="date">
-                        <p>26 Nov</p>
-                    </div>
-                </div>
-            </article>
-        </div>
+    <section class="carousel all-melbourne-events">
+        <h3>Events <%= user.first_name %> is going to</h3>
+        <div class="article-wrapper results"></div>
     </section>
 
-
 </main>
+
+<script>
+  var searchResult = document.querySelector(".search-result")
+  var allMelbourneEvents = document.querySelector(".all-melbourne-events")
+  var form = document.querySelector('.create-post-form')
+  var formInput = document.querySelector('.form-input')
+  var allEvents = document.querySelector('.all-events-tag')
+  var appendingSection = allMelbourneEvents
+
+  var updateRequestData = function() {
+    eventData = [
+      {
+        customSearch: {
+          "keyword": `${formInput.value}`, 
+          "city": "Melbourne", 
+          "numResults": "10", 
+          // "startDateTime": "2019-11-29T09:00:00Z", //calendar based
+          // "endDateTime": "2019-12-02T09:00:00Z", //calendar based
+          "sortBy": "relevance,asc",
+          "resultClass": "search-result",
+          "heading": "Search Results" 
+        }
+      },
+      {
+        defaultResults: { 
+          "city": "Melbourne", 
+          "numResults": "10", 
+          "sortBy": "relevance,asc",
+          "resultClass": "all-melbourne-result",
+          "heading": "All Events In Melbourne" 
+        }
+      }
+    ]
+
+    customSearchRequest = {
+      url:`https://app.ticketmaster.com/discovery/v2/events?locale=*&segmentName=music&size=${eventData[0].customSearch.numResults}&keyword=${eventData[0].customSearch.keyword}&includeTest=no&sort=${eventData[0].customSearch.sortBy}&city=${eventData[0].customSearch.city}&countryCode=AU&includeSpellcheck=yes&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`
+    }
+
+    allMelbourneEventsRequest = {
+      url:`https://app.ticketmaster.com/discovery/v2/events?locale=*&segmentName=music&size=${eventData[1].defaultResults.numResults}&includeTest=no&sort=${eventData[1].defaultResults.sortBy}&city=${eventData[1].defaultResults.city}&countryCode=AU&includeSpellcheck=yes&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ`
+    }
+  }
+
+  updateRequestData()
+
+  var createEvent = (result, data) => {
+    return `
+      <article class="event-article ${data.resultClass}-event">
+          <div class="event-article__img-wrapper">
+              <a href="/events/details?id=${result.id}"><img src='${result.images[0].url}' /></a>
+          </div>
+          <div class="event-article__details">
+              <div class="title-location">
+                  <a href="/events/details?id=${result.id}"><h4>${result.name}</h4></a>
+                  <span>${result._embedded.venues[0].name}</span><span> • </span><span>24 potential buddies</span>
+              </div>
+              <div class="date">
+                  <p>${result.dates.start.localDate}</p>
+              </div>
+          </div>
+      </article>
+    `
+  }
+  
+  var runApi = (request, data) => {
+    $.ajax(request).done((resp) => {
+      if (resp._embedded) {
+        resp._embedded.events.forEach(result => {
+          var html = createEvent(result, data)
+          $(appendingSection).find('.results').append(html)
+        })
+      } else {
+        var noResultMessage = `<h3>There were no events found for the search "${formInput.value}".</h3>`
+        $(appendingSection).find('.results').append(noResultMessage)
+        allMelbourneEvents.style.display = "block"
+        runApi(allMelbourneEventsRequest, data)
+      }
+    })
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault()
+    appendingSection = searchResult
+    $(appendingSection).find('.results').empty()
+
+    $(allMelbourneEvents).hide('slow')
+    $(searchResult).delay(530).show('slow')
+    $(allEvents).delay(530).show('slow')
+
+    updateRequestData()
+    var data = eventData[0].customSearch
+    runApi(customSearchRequest, data)
+  })
+
+  // runs immediately
+  searchResult.style.display = "none"
+  var data = eventData[1].defaultResults
+  runApi(allMelbourneEventsRequest, data)
+
+
+
+
+
+  var hideSearch = (e) => {
+    e.preventDefault()
+    $(searchResult).hide('slow')
+    $(allEvents).show('slow')
+    $(allMelbourneEvents).delay(530).show('slow')
+  }
+
+  allEvents.addEventListener('click', hideSearch)
+
+
+
+  // var createDate = () => {
+  //   var currentDate = new Date(); 
+  //     var dateTime = currentDate.getDate() + "-"
+  //       + (currentDate.getMonth()+1)  + "-" 
+  //       + currentDate.getFullYear() + "T"  
+  //       + currentDate.getHours() + ":"  
+  //       + currentDate.getMinutes() + ":" 
+  //       + currentDate.getSeconds() + "Z"
+
+  //     console.log(dateTime)
+  //     return dateTime
+  // }
+
+</script>
