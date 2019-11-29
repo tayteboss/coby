@@ -3,72 +3,15 @@
     .create-post-form {
         display: none;
     }
+    * {
+        background: black;
+        color: white;
+    }
 
+    .event-name {
+        padding-top: 100px;
+    }
 </style>
-
-<h1 class="event-name"></h1>
-
-<img class="main-image" src="" alt="">
-
-<a target="_blank" class="event-venue-link" href=""><p class="event-venue"></p></a>
-
-<p class="event-date"></p>
-
-<section class="create-post-section">
-    <button class="create-post-btn">Create Post</button>
-    <form class="create-post-form" action="" method="get">
-    <h2>Create a post</h2>
-        <label for="">Post Title</label><br>
-        <input type="text" name="post-title" id="" ><br>
-        <label for="">Age Group preference</label><br>
-        <select name="age-preference">
-            <option value="any age">any age</option>
-            <option value="under30">between 18 and 30</option>
-            <option value="over30">over 30</option>
-            <option value="over40">over 40</option>
-        </select><br>
-        <label for="">Gender preference</label><br>
-        <select name="gender-preference">
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="anyone">anyone</option>
-        </select><br>
-        <label for="">Group size preference</label><br>
-            <input type="text" name="group-size" id="" ><br>
-        <label for="">Description</label><br>
-        <input type="text" name="post-description" id="" ><br>
-        <button>Post</button>
-    </form>
-</section>
-
-
-
-
-<section class="active-posts">
-    <h2>Looking for buddies</h2>
-    <% 3.times do %>
-        <article>
-            <h3 class="single-post">Post Title</h3>
-            <p>Prefers anyone under 30</p>
-            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
-            <a href="">Message</a>
-        </article>
-    <% end %>
-</section>
-
-<section class="inactive-posts">
-    <h2>People who found their buddies</h2>
-    <% 3.times do %>
-        <article>
-            <h3 class="single-post">Post Title</h3>
-            <p>Prefer females between age 30 - 50</p>
-            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
-            <a href="">Message</a>
-        </article>
-    <% end %>
-
-</section>
-
 
 <script class="API DATA">
     var eventName = document.querySelector(".event-name")
@@ -76,30 +19,64 @@
     var eventVenue = document.querySelector(".event-venue")
     var eventVenueLink = document.querySelector(".event-venue-link")
     var eventDate = document.querySelector(".event-date")
-    var eventId
+    // var eventId
+            eventName.textContent = name
+            mainImage.src = image
+            mainImage.style.height = "400px"
+            eventVenue.textContent = location
+            eventVenueLink.href = `https://www.google.com/maps/search/?api=1&query=${eventLocation.replace(' ', '+')}`
+            eventDate.textContent = date + " at " + time
 
-    $.ajax({
-    type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?id=16vGZ4srkG7lNML&size=1&apikey=4YWDBJED6GiApvdUBnHWa3hVuiXC4YnJ",
-    async:true,
-    dataType: "json",
-    success: (resp) => {
-        result = resp._embedded.events[0]
-        eventName.textContent = result.name
-        mainImage.src = result.images[0].url
-        mainImage.style.height = "400px"
-        eventVenue.textContent = result._embedded.venues[0].name
-        eventVenueLink.href = `https://www.google.com/maps/search/?api=1&query=${result._embedded.venues[0].name.replace(' ', '+')}`
-        eventDate.textContent = result.dates.start.localDate + " " + result.dates.start.localTime
-
-        },
-    error: (xhr, status, err) => {
-        // This time, we do not end up here!
-        console.log(xhr, status, err)
-    }
+        })
     })
-
 </script>
+
+<h1 class="event-name"><%= @name %></h1>
+
+<img class="main-image" src="<%= @image %>" alt="">
+
+<a target="_blank" class="event-venue-link" href="https://www.google.com/maps/search/?api=1&query=<%=@location.gsub(' ', '+')%>">
+    <p class="event-venue"><%= @location %></p>
+</a>
+
+<p class="event-date-time"><%= @date %> at <%= @time %></p>
+
+
+<section class="create-post-section">
+    <button class="create-post-btn">Create Post</button>
+    <form class="create-post-form" action="/events/create_post" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="id" value="<%= params[:id] %>">
+        <input type="hidden" name="name" value="<%= @name %>">
+        <input type="hidden" name="image" value="<%= @image %>">
+        <input type="hidden" name="location" value="<%= @location %>">
+        <input type="hidden" name="date" value="<%= @date %>">
+        <input type="hidden" name="time" value="<%= @time %>">
+
+
+    <h2>Create a post</h2>
+        <label for="">Post Title</label><br>
+        <input type="text" name="post_title" id="" ><br>
+        <label for="">Age Group preference</label><br>
+        <select name="age_preference">
+            <option value="any age">any age</option>
+            <option value="under 30">between 18 and 30</option>
+            <option value="over 30">over 30</option>
+            <option value="over 40">over 40</option>
+        </select><br>
+        <label for="">Gender preference</label><br>
+        <select name="gender_preference">
+            <option value="anyone">anyone</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select><br>
+        <label for="">Group size preference</label><br>
+            <input type="text" name="group_size" id="" ><br>
+        <label for="">Description</label><br>
+        <input type="text" name="post_description" id="" ><br>
+        <button>Post</button>
+    </form>
+</section>
 
 <script class="create-form">
     var createPostSection = document.querySelector('.create-post-section')
@@ -117,4 +94,40 @@
     createPostBtn.addEventListener('click', showCreatePostForm)
 
 </script>
+
+<section class="active-posts">
+    <h2>Find a buddy</h2>
+    <%# if @active_posts.nil? %>
+        <h3><%#= @no_posts %></h3>
+    <%# else %>
+        <% @active_posts.each do |post| %>
+            <article>
+                <h3 class="post-title"><%= post.post_title %></h3>
+                <p>Posted By: <%= @users %></p>
+                <p><%= post.age_preference %></p>
+                <p><%= post.gender_preference %></p>
+                <p><%= post.group_size %></p>
+                <p class="post-description"><%= post.post_description %></p>
+                <a href="">Message</a>
+            </article>
+        <% end %>
+    <%# end %>
+
+</section>
+
+<section class="inactive-posts">
+    <h2>People who found their buddies</h2>
+    <% 3.times do %>
+        <article>
+            <h3 class="single-post">Post Title</h3>
+            <p>Prefer females between age 30 - 50</p>
+            <p class="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, blanditiis distinctio ex recusandae accusantium nisi eveniet maiores esse minus earum adipisci minima corrupti tempora non unde itaque aliquid corporis voluptatem!</p>
+            <a href="">Message</a>
+        </article>
+    <% end %>
+
+</section>
+
+
+
 

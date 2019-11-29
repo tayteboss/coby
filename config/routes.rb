@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   get '/events', to: 'events#index'
   get '/events/details', to: 'events#details'
+  post '/events/create_post', to: 'events#create_post'
+ 
+
 
   get '/login', to: 'session#index'
   post '/login', to: 'session#verify_account'
