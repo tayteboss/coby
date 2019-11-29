@@ -4,7 +4,7 @@
             <h2>Sign Up</h2>
         </div>
         <div class="signup__form__fields">
-            <form action="/signup" method="post">
+            <form action="/signup" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <div class="signup-stage1">
                     <div class="form-fields-wrapper">
@@ -48,10 +48,13 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <div class="signup-stage2 d-none">
                     <div class="form-avatar-wrapper">
-                        <%=image_tag("profile-icon.png")%>
+                        <label for="file-input">
+                            <%=image_tag("profile-icon.png", class: "classname")%>
+                        </label>
+                        <input id="file-input" type="file" name="avatar" >
                         <p class="lh-13">Click avatar to upload<br>your display picture</p>
                     </div>
                 </div>
@@ -77,6 +80,8 @@
     var stageOneSection = document.querySelector('.signup-stage1')
     var stageTwoBtn = document.querySelector('.signup-stage2-btn')
     var stageTwoSection = document.querySelector('.signup-stage2')
+
+    //profile_pic_search
 
     var handleClick = (e) => {
         e.preventDefault()
