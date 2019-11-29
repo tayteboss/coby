@@ -35,6 +35,69 @@
 
 <img class="main-image" src="<%= @image %>" alt="">
 
+
+<script class="API DATA">
+    var eventName = document.querySelector(".event-name")
+    var mainImage = document.querySelector(".main-image")
+    var eventVenue = document.querySelector(".event-venue")
+    var eventVenueLink = document.querySelector(".event-venue-link")
+    var eventDate = document.querySelector(".event-date")
+    // var eventId
+            eventName.textContent = name
+            mainImage.src = image
+            mainImage.style.height = "400px"
+            eventVenue.textContent = location
+            eventVenueLink.href = `https://www.google.com/maps/search/?api=1&query=${eventLocation.replace(' ', '+')}`
+            eventDate.textContent = date + " at " + time
+
+        })
+    })
+</script>
+
+
+<main class="event">
+
+    <header class="event__header">
+        <div class="event-hero-bg"></div>
+        <div class="event__header__wrapper">
+            <h1>Waxo Paradiso</h1>
+            <h4><span>Grace Darling Hotel</span><span> - </span><span>25 May</span></h4>
+            <div>
+                <button class="prim-btn">Get tickets</button>
+                <button class="white-btn">Create Posts</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="buddy-section">
+        <div class="buddy-section__title">
+            <h2>Find a buddy</h2>
+        </div>
+        <div class="buddy-section__posts">
+            <article class="posts">
+                <div class="posts__dp">
+                    <img src="" alt="">
+                </div>
+                <div class="posts__title">
+                    <h2>Chad</h2>
+                    <p>Looking for a group of 3</p>
+                </div>
+                <div class="posts__btns">
+                    <p>Description</p>
+                    <button class="prim-btn">Connect</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</main>
+
+
+
+<h1 class="event-name"><%= @name %></h1>
+
+<img class="main-image" src="<%= @image %>" alt="">
+
 <a target="_blank" class="event-venue-link" href="https://www.google.com/maps/search/?api=1&query=<%=@location.gsub(' ', '+')%>">
     <p class="event-venue"><%= @location %></p>
 </a>
