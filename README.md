@@ -1,24 +1,50 @@
-# README
+# COBY
+**Find your perfect buddy for the night out**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![coby screenshot](screenshot.jpg)
 
-Things you may want to cover:
+### Explore the app
+https://stormy-chamber-71728.herokuapp.com/
 
-* Ruby version
+## Concept
+Coby is a safe platform for those of any age who want to meet new people while looking for a night out on the town. Whether you're new to a city or just want to expland your network of friends. 
 
-* System dependencies
+Firstly, users will use the Coby platform to find events they're interested in around their selected town. From there they will be greeted with other like-minded 'buddies' who are also looking for others to go out with. Coby will then allow you to send an email to that buddy to plan the night ahead.
 
-* Configuration
+## Technology & Concepts used
+* Ruby on Rails
+* Ticketmaster API
+* CarrierWave
+* Javascript
+* JQuery
+* AJAX
+* Heroku
+* SASS
+* HTTParty
+* Postgresql
 
-* Database creation
+## Challenges
+* There are many, many moving parts with many, many details to consider when building functionality.
+* Learning Rails on the fly! Rails is a big step up from Sinatra.
 
-* Database initialization
 
-* How to run the test suite
+### Git Collaboration
+You all know what we're talking about...
 
-* Services (job queues, cache servers, search engines, etc.)
+### Documentation
+Not all documentation is easy to ready yet understand
 
-* Deployment instructions
+### Conventions
+After completing this project we realised the importance of deciding on naming conventions
 
-* ...
+## Lessons Learned
+* Communication is key
+* Don't wait around till components are built by other team mates
+* Plan your project carefully at the start.
+* Stay within an achieveable scope!
+* Don't have to understand documentation reference fully
+* Define features clearly
+
+## WIP
+* Messaging App
+* Event filtering
